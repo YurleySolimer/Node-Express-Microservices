@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/YurleySolimer/Node-Express-Microservices#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "nanoid": "^3.1.23"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
