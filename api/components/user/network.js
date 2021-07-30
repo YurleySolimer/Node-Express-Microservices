@@ -33,7 +33,15 @@ router.post('/', function (req, res) {
         })
 })
 
-
+router.put('/', function (req, res) {
+    Controller.upsert(req.body)
+        .then((data) => {
+            response.success(req, res, data, 201)
+        })
+        .catch((err) => {
+            response.error(req, res, err.message, 500)
+        })
+})
 
 router.delete('/:id', async function (req, res) {
     const userDeleted = await Controller.delete(req.params.id)
