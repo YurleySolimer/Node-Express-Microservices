@@ -31,7 +31,7 @@ module.exports = function (injectedStore) {
             await auth.upsert({
                 id: user.id,
                 username: user.username,
-                password: user.password
+                password: data.password
             })
         }
 
