@@ -16,26 +16,28 @@ module.exports = function (injectedStore) {
         return store.list(TABLA, id)
     }
 
-    async function upsert(data) {
+    async function upsert(body) {
         const user = {
-            name: data.name,
-            username: data.username
-        }
-        if(data.id) {
-            user.id = data.id
-        } else {
-            user.id = nanoid()
+            name: body.name,
+            username: body.username,
         }
 
-        if(data.password || data.username) {
+        if (body.id) {
+            user.id = body.id;
+        } else {
+            user.id = nanoid();
+        }
+
+        if (body.password || body.username) {
             await auth.upsert({
                 id: user.id,
                 username: user.username,
-                password: data.password
+                password: body.password,
             })
         }
 
-        return store.upsert(TABLA, data)
+        return store.upsert(TABLA, user);
+    
     }
 
     return {

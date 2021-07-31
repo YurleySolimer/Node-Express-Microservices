@@ -24,16 +24,17 @@ module.exports = function (injectedStore) {
     }
 
     async function login(username, password) {
-        const data = await store.query(TABLA, { username : username})
+        const data = await store.query(TABLA, { username: username });
+        
         return bcrypt.compare(password, data.password)
-            .then(sonIguales =>{
+            .then(sonIguales => {
                 if (sonIguales === true) {
-                    //Generar token
-                    return auth.sign(data)
+                    // Generar token;
+                    return auth.sign({ ...data })
                 } else {
-                    throw new Error('Informacion invalida')
+                    throw new Error('Informacion invalida');
                 }
-            })
+            });
     }
 
     return {
