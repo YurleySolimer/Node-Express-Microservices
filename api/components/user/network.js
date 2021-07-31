@@ -1,6 +1,9 @@
 const { Router } = require('express')
+
+const secure = require('./secure')
 const response = require('../../../network/response')
 const Controller = require('./index')
+
 const router = Router()
 
 router.get('/', function (req, res) {
@@ -33,7 +36,7 @@ router.post('/', function (req, res) {
         })
 })
 
-router.put('/', function (req, res) {
+router.put('/', secure('update'), function (req, res) {
     Controller.upsert(req.body)
         .then((data) => {
             response.success(req, res, data, 201)
