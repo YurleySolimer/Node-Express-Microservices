@@ -44,6 +44,14 @@ router.post('/', secure('follow'), function (req, res) {
         })
 })
 
+router.get('/:id/following', function (req, res) {
+    return Controller.following(req.params.id)
+        then((data) => {
+            return response.success(req, res, data, 200)
+        })
+        .catch(next)
+})
+
 router.put('/', secure('update'), function (req, res) {
     Controller.upsert(req.body)
         .then((data) => {
