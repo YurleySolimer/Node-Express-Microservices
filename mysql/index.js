@@ -1,16 +1,16 @@
-const express = require('express')
+const express = require('express');
+const bodyParser = require('body-parser');
 
-const config = require('../config')
-const router = require('./network')
+const config = require('../config');
+const router = require('./network');
 
-const app = express()
+const app = express();
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }))
+app.use(bodyParser.json());
 
-//Routes
+// RUTAS
 app.use('/', router)
 
-app.listen(config.mysqlService.port), () => {
-    console.log('Servicio de MYSQL escuchando en el puesto', config.mysqlService.port)
-}
+app.listen(config.mysqlService.port, () => {
+    console.log('Servicio de mysql escuchando en el puerto', config.mysqlService.port);
+})

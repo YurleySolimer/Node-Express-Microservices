@@ -1,16 +1,16 @@
-const { Router } = require('express')
-const response = require('../../../network/response')
-const Controller = require('./index')
-const router = Router()
+const express = require('express');
 
-router.post('/login', function(req, res) {
+const response = require('../../../network/response');
+const Controller = require('./index');
+
+const router = express.Router();
+
+router.post('/login', function(req, res, next) {
     Controller.login(req.body.username, req.body.password)
-    .then((token) => {
-        response.success(req, res, token, 200)
-    })
-    .catch((err) => {
-        response.error(req, res, 'Informacion invalida', 400)
-    })
+        .then(token => {
+            response.success(req, res, token, 200);
+        })
+        .catch(next);
 })
 
 module.exports = router;

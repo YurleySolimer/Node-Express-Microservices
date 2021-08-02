@@ -2,11 +2,11 @@ exports.success = function (req, res, message, status) {
     let statusCode = status || 200;
     let statusMessage = message || '';
 
-    res.status(statusCode).send({
+    res.status(status).send({
         error: false,
-        status: statusCode,
-        body: statusMessage
-    })
+        status: status,
+        body: message,
+    });
 }
 
 exports.error = function (req, res, message, status) {
@@ -14,8 +14,8 @@ exports.error = function (req, res, message, status) {
     let statusMessage = message || 'Internal server error';
 
     res.status(statusCode).send({
-        error: true,
-        status: statusCode,
-        body: statusMessage
-    })
+        error: false,
+        status: status,
+        body: message,
+    });
 }
