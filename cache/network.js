@@ -24,4 +24,5 @@ async function upsert(req, res, next) {
     response.success(req, res, datos, 200);
 }
 
+
 module.exports = router;
