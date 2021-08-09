@@ -22,5 +22,10 @@ module.exports = {
     },
     post: {
         port: process.env.POST_PORT || 3002
+    },
+    redis: {
+        host: 'redis-11245.c60.us-west-1-2.ec2.cloud.redislabs.com',
+        port: 11245,
+        password: 'U5DbX7CWAeqm0NWNxufaGA4VuatSqSEr'
     }
 }
